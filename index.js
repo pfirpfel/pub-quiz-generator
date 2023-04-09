@@ -36,7 +36,8 @@ async function main() {
         });
 
         // add questions
-        slides.push(...category.questions);
+        if(category.hasOwnProperty('questions'))
+            slides.push(...category.questions);
     }
 
     await createSlides(slides);
