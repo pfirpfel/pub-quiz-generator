@@ -33,11 +33,16 @@ title_page:
   questions: # array
   - type: text
     question: huhu?
+    title: huhu # optional
     answer: hu
     source: google # optional
 
   - type: markdown
-    question: huhu?
+    question: |
+      ## Best fruit?
+      - strawberry
+      - apple
+      - banana
     answer: hu
     source: google # optional
 

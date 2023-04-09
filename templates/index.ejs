@@ -1,0 +1,35 @@
+<html>
+<head>
+    <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="../node_modules/reveal.js/dist/theme/black.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <% questions.forEach(function(question){ %>
+            <% if (question.type === 'title') { %>
+                <%- include('title', { question }); %>
+            <% } %>
+            <% if (question.type === 'text') { %>
+                <%- include('questions/text', { question, isAnswer }); %>
+            <% } %>
+            <% if (question.type === 'image') { %>
+                <%- include('questions/image', { question, isAnswer }); %>
+            <% } %>
+        <% }); %>
+    </div>
+</div>
+<script src="../node_modules/reveal.js/dist/reveal.js"></script>
+<script src="../node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+<script>
+    Reveal.initialize({
+        controls: false,
+        progress: false,
+        center: true,
+        hash: true,
+        keyboard: true,
+        plugins: [ RevealMarkdown ]
+    });
+</script>
+</body>
+</html>

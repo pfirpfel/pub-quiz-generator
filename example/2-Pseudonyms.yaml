@@ -1,0 +1,12 @@
+title_page:
+  title: Pseudonyms
+  caption: For what name is this person famous for?
+
+questions:
+  - type: text
+    question: Stefani Joanne Angelina Germanotta
+    answer: Lady Gaga
+
+  - type: text
+    question: Reginald Kenneth Dwight
+    answer: Elton John

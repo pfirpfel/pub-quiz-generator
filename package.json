@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/pfirpfel/pub-quiz-generator/issues"
   },
-  "homepage": "https://github.com/pfirpfel/pub-quiz-generator#readme"
+  "homepage": "https://github.com/pfirpfel/pub-quiz-generator#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "js-yaml": "^4.1.0",
+    "reveal.js": "^4.4.0"
+  }
 }

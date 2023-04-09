@@ -7,6 +7,6 @@ questions:
       answer: Berlin
 
     - type: image
-      image: media/capital2.jpg
+      image: ../example/media/capital2.jpg
       answer: Paris
       source: Daniela Kloth, GFDL 1.2
