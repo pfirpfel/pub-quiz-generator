@@ -1,0 +1,12 @@
+title_page:
+    title: Name the capital
+
+questions:
+    - type: text
+      question: Germany
+      answer: Berlin
+
+    - type: image
+      image: media/capital2.jpg
+      answer: Paris
+      source: Daniela Kloth, GFDL 1.2
