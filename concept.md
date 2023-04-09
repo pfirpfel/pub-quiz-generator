@@ -31,7 +31,6 @@ title_page:
   caption: huhu # optional
   # if markdown is set, other properties than title will be ignored
   markdown: |
-    ## Title
     - a
     - b
     - c
@@ -46,10 +45,10 @@ title_page:
   - type: markdown
     question: |
       ## Best fruit?
-      - strawberry
-      - apple
-      - banana
-    answer: hu
+      1. strawberry
+      2. apple
+      3. banana
+    answer: C. Banana # alphanumerical bullet points are being used
     source: google # optional
 
   - type: image
