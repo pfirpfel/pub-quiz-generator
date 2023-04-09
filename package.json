@@ -1,0 +1,22 @@
+{
+  "name": "pub-quiz-generator",
+  "version": "0.0.1",
+  "description": "Generate a pub quiz presentation from yaml",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pfirpfel/pub-quiz-generator.git"
+  },
+  "author": "Michael Kuenzli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pfirpfel/pub-quiz-generator/issues"
+  },
+  "homepage": "https://github.com/pfirpfel/pub-quiz-generator#readme"
+}
