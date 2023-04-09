@@ -3,10 +3,11 @@
     <title><%= config.title %></title>
     <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
     <link rel="stylesheet" href="../node_modules/reveal.js/dist/theme/black.css">
+    <%_ if (config.custom_css) { -%>
     <style>
-        .reveal ol { list-style-type: upper-alpha; }
-        .answer { color: red }
+<%- config.custom_css %>
     </style>
+    <%_ } -%>
 </head>
 <body>
 <div class="reveal">

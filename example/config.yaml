@@ -1,1 +1,10 @@
 title: Example Pup Quiz
+custom_css: |
+  .reveal ol { list-style-type: upper-alpha; }
+  .answer { color: red }
+  .source {
+      font-size: x-small;
+  }
+  .source::before {
+      content: "Source: ";
+  }
