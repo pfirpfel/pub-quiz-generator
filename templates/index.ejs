@@ -21,9 +21,15 @@
             <%_ if (question.type === 'image') { -%>
 <%- include('questions/image', { question, isAnswer }); %>
             <%_ } -%>
-        <%_ if (question.type === 'markdown') { -%>
+            <%_ if (question.type === 'markdown') { -%>
 <%- include('questions/markdown', { question, isAnswer }); %>
-        <%_ } -%>
+            <%_ } -%>
+            <%_ if (question.type === 'audio') { -%>
+<%- include('questions/audio', { question, isAnswer }); %>
+            <%_ } -%>
+            <%_ if (question.type === 'video') { -%>
+<%- include('questions/video', { question, isAnswer }); %>
+            <%_ } -%>
         <%_ }); -%>
     </div>
 </div>

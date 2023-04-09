@@ -61,6 +61,8 @@ title_page:
 
   - type: audio
     audio: media/c1q3.mp3
+    audio_type: audio/mp3
+    autoplay: true # default: true
     image: media/c1q3.png # optional
     title: huhu # optional
     caption: huhu # optional
@@ -68,7 +70,9 @@ title_page:
     source: google # optional
 
   - type: video
-    video: media/c1q3.mp4
+    video: media/c1q3.webm
+    video_type: video/webm
+    autoplay: true # default: true
     title: huhu # optional
     caption: huhu # optional
     answer: hu
