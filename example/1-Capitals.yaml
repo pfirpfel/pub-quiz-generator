@@ -14,5 +14,13 @@ questions:
     - type: image
       title: Hmm...
       image: ../example/media/capital3.jpg
-      answer: Tokyp
+      answer: Tokyo
       source: Asanagi, Public Domain
+
+    - type: markdown
+      title: South Africa
+      markdown: |
+        1. Pretoria
+        2. Cape Town
+        3. Bloemfontein
+      answer: A, B, C

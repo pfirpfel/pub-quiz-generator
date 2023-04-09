@@ -1,0 +1,11 @@
+<section data-markdown>
+        <script type="text/template">
+<%_ if (question.title) { -%>
+## <%= question.title %>
+<%_ } -%>
+<%= question.markdown %>
+<%_ if (isAnswer) { -%>
+<%= question.answer %> <!-- .element: class="fragment" -->
+<%_ } -%>
+        </script>
+</section>

@@ -2,6 +2,9 @@
 <head>
     <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
     <link rel="stylesheet" href="../node_modules/reveal.js/dist/theme/black.css">
+    <style>
+        .reveal ol { list-style-type: upper-alpha; }
+    </style>
 </head>
 <body>
 <div class="reveal">
@@ -16,6 +19,9 @@
             <%_ if (question.type === 'image') { -%>
 <%- include('questions/image', { question, isAnswer }); %>
             <%_ } -%>
+        <%_ if (question.type === 'markdown') { -%>
+<%- include('questions/markdown', { question, isAnswer }); %>
+        <%_ } -%>
         <%_ }); -%>
     </div>
 </div>
