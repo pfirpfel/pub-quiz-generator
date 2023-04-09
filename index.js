@@ -15,9 +15,13 @@ async function main() {
 
     // remove and handle config.yaml
     const configIndex = categoryFiles.indexOf('config.yaml');
+    let config = null;
     if (configIndex !== -1) {
-        const removedFiles = categoryFiles.splice(configIndex, 1);
-        // TODO parse config
+        const configFile = categoryFiles.splice(configIndex, 1);
+        config = await readFile(examplePath + '/' + configFile)
+            .then( content => yaml.load(content, 'utf8'));
+        config = config || {};
+        config.title = config.title || 'Pub Quiz';
     }
 
     const categoryYamls = await Promise.all(
@@ -40,16 +44,16 @@ async function main() {
             slides.push(...category.questions);
     }
 
-    await createSlides(slides);
+    await createSlides(slides, config);
 
     process.exit(0);
 }
 
-async function createSlides(slides){
+async function createSlides(slides, config){
     await createDirectoryIfNotExists(outPath);
 
-    const quiz = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: false }, {});
-    const answers = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: true }, {});
+    const quiz = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: false, config }, {});
+    const answers = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: true, config }, {});
 
     await writeFile(quiz, outPath + '/index.html');
     await writeFile(answers, outPath + '/answers.html');
