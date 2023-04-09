@@ -6,17 +6,17 @@
 <body>
 <div class="reveal">
     <div class="slides">
-        <% questions.forEach(function(question){ %>
-            <% if (question.type === 'title') { %>
-                <%- include('title', { question }); %>
-            <% } %>
-            <% if (question.type === 'text') { %>
-                <%- include('questions/text', { question, isAnswer }); %>
-            <% } %>
-            <% if (question.type === 'image') { %>
-                <%- include('questions/image', { question, isAnswer }); %>
-            <% } %>
-        <% }); %>
+        <%_ questions.forEach(function(question){ -%>
+            <%_ if (question.type === 'title') { -%>
+<%- include('title', { question }); %>
+            <%_ } -%>
+            <%_ if (question.type === 'text') { -%>
+<%- include('questions/text', { question, isAnswer }); %>
+            <%_ } -%>
+            <%_ if (question.type === 'image') { -%>
+<%- include('questions/image', { question, isAnswer }); %>
+            <%_ } -%>
+        <%_ }); -%>
     </div>
 </div>
 <script src="../node_modules/reveal.js/dist/reveal.js"></script>

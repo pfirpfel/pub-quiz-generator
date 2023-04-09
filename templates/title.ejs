@@ -1,11 +1,11 @@
-<section>
-    <% if (question.title) { %>
-        <h2><%= question.title %></h2>
-    <% } %>
-    <% if (question.image) { %>
-        <img data-src="<%- question.image %>">
-    <% } %>
-    <% if (question.caption) { %>
-        <p class="caption"><%= question.caption %></p>
-    <% } %>
-</section>
+        <section>
+            <%_ if (question.title) { -%>
+                <h2><%= question.title %></h2>
+            <%_ } -%>
+            <%_ if (question.image) { -%>
+                <img data-src="<%- question.image %>">
+            <%_ } -%>
+            <%_ if (question.caption) { -%>
+                <p class="caption"><%= question.caption %></p>
+            <%_ } -%>
+        </section>
