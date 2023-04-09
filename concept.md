@@ -84,6 +84,7 @@ title_page:
 
 # Notes
 - A category can have zero questions and act as a slide in between categories.
+- Custom section tag with background: https://revealjs.com/backgrounds/
 - Automate category / question numbering
 - Generate answering and solutions sheets for printing
 - Dockerize youtube-dl / ffmpeg pipeline and/or project as a whole?
