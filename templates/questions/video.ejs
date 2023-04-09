@@ -1,21 +1,21 @@
-<section>
-    <%_ if (question.title) { -%>
-        <h2><%= question.title %></h2>
-    <%_ } -%>
-    <video <%_ if(!(question.autoplay === false)){ -%>data-autoplay <% } -%> >
-        <source data-src="<%- question.audio %>" type="<%- question.audio_type %>" />
-    </video>
+        <section>
+            <%_ if (question.title) { -%>
+                <h2><%= question.title %></h2>
+            <%_ } -%>
+                <video <%_ if(!(question.autoplay === false)){ -%> data-autoplay<% } -%>>
+                    <source data-src="<%- question.video %>" type="<%- question.video_type %>" />
+                </video>
 
-    <%_ if (question.image) { -%>
-        <img class="r-stretch" data-src="<%- question.image %>">
-    <%_ } -%>
-    <%_ if (question.caption) { -%>
-        <p class="caption"><%= question.caption %></p>
-    <%_ } -%>
-    <%_ if (isAnswer) { -%>
-        <p class="fragment answer"><%= question.answer %></p>
-    <%_ } -%>
-    <%_ if (question.source) { -%>
-        <p class="source"><%= question.source %></p>
-    <%_ } -%>
-</section>
+            <%_ if (question.image) { -%>
+                <img class="r-stretch" data-src="<%- question.image %>">
+            <%_ } -%>
+            <%_ if (question.caption) { -%>
+                <p class="caption"><%= question.caption %></p>
+            <%_ } -%>
+            <%_ if (isAnswer) { -%>
+                <p class="fragment answer"><%= question.answer %></p>
+            <%_ } -%>
+            <%_ if (question.source) { -%>
+                <p class="source"><%= question.source %></p>
+            <%_ } -%>
+        </section>

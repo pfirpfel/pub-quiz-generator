@@ -1,0 +1,11 @@
+title_page:
+  title: Trivia
+
+questions:
+  - type: audio
+    audio: ../example/media/trivia1.ogg
+    audio_type: audio/ogg
+    title: Music
+    caption: Who composed this song?
+    answer: Ludwig van Beethoven
+    source: United States Navy Band, Public Domain
