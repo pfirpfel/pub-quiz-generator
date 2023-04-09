@@ -29,6 +29,12 @@ title_page:
   title: blabla
   image: # optional
   caption: huhu # optional
+  # if markdown is set, other properties than title will be ignored
+  markdown: |
+    ## Title
+    - a
+    - b
+    - c
 
   questions: # array
   - type: text

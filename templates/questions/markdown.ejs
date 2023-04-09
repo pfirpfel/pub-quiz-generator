@@ -3,7 +3,7 @@
 <%_ if (question.title) { -%>
 ## <%= question.title %>
 <%_ } -%>
-<%= question.markdown %>
+<%- question.markdown %>
 <%_ if (isAnswer) { -%>
 <%= question.answer %> <!-- .element: class="fragment" -->
 <%_ } -%>

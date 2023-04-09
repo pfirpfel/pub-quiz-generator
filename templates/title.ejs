@@ -1,3 +1,13 @@
+<%_ if (question.hasOwnProperty('markdown') && question.markdown !== null) { -%>
+<section data-markdown>
+    <script type="text/template">
+<%_ if (question.title) { -%>
+    ## <%= question.title %>
+<%_ } -%>
+<%- question.markdown %>
+    </script>
+</section>
+<%_ } else { -%>
         <section>
             <%_ if (question.title) { -%>
                 <h2><%= question.title %></h2>
@@ -9,3 +19,4 @@
                 <p class="caption"><%= question.caption %></p>
             <%_ } -%>
         </section>
+<%_ } -%>
