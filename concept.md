@@ -1,5 +1,5 @@
 # Folder structure
-
+```
 Quiz #1
 |_ config.yaml
 |_ 1-Category.yaml    # will be read alphabetically
@@ -10,6 +10,7 @@ Quiz #1
   |_ c1q3.png
 |_ templates
   |_ base.html
+```
 
 # Config
 
@@ -17,6 +18,7 @@ Quiz #1
 
 # Category layout
 
+```yaml
 title_page:
   title: blabla
   image: # optional
@@ -49,6 +51,7 @@ questions: # array
     caption: huhu # optional
     answer: hu
     source: google # optional
+```
 
 # Notes
 - A category can have zero questions and act as a slide in between categories.
