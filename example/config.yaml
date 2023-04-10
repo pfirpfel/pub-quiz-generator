@@ -1,4 +1,5 @@
 title: Example Pup Quiz
+display_question_numbers: false # TODO re-enable after positioning is fixed
 custom_css: |
   .reveal ol { list-style-type: upper-alpha; }
   .answer { color: red }
@@ -7,4 +8,9 @@ custom_css: |
   }
   .source::before {
       content: "Source: ";
+  }
+  .question_number { /* TODO */
+      position: absolute;
+      top: 0;
+      left: 0;
   }

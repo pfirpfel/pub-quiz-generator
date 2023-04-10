@@ -32,6 +32,7 @@ async function main() {
     );
 
     const slides = [];
+    let categoryCount = 0;
     for(const category of categoryYamls) {
         // add category title page first
         slides.push({
@@ -39,9 +40,16 @@ async function main() {
             ...category.title_page
         });
 
-        // add questions
-        if(category.hasOwnProperty('questions'))
+        if(category.hasOwnProperty('questions') && category.questions.length > 0){
+            // add numbering to questions
+            categoryCount++;
+            category.questions.forEach((question, index) => {
+                question.category_number = categoryCount;
+                question.question_number = index + 1;
+            });
+            // add questions
             slides.push(...category.questions);
+        }
     }
 
     await createSlides(slides, config);
