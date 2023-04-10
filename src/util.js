@@ -1,4 +1,6 @@
 const fs = require('fs');
+const { readFile } = require("node:fs/promises");
+const yaml = require("js-yaml");
 
 exports.writeFile =  async function(data, path) {
     return new Promise((resolve, reject) => {
@@ -40,4 +42,9 @@ exports.listFiles =  async function(path) {
             }
         });
     }));
+}
+
+exports.readYamlFile = async function(path) {
+    return readFile(path)
+        .then( content => yaml.load(content, 'utf8'));
 }

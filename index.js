@@ -1,46 +1,49 @@
 const process = require('node:process');
 const path = require('path');
-const { listFiles, createDirectoryIfNotExists, writeFile } = require('./src/util');
-const yaml = require('js-yaml');
+const { listFiles, createDirectoryIfNotExists, writeFile, readYamlFile } = require('./src/util');
 const ejs = require('ejs');
-const { readFile } = require('node:fs/promises');
 
 const templatesPath = path.resolve(__dirname + '/templates/');
 const outPath = path.resolve(__dirname + '/output/');
 
 async function main() {
-    const examplePath = path.resolve(__dirname + '/example/');
-    const projectFiles = await listFiles(examplePath);
-    let categoryFiles = projectFiles.filter(f => f.match(/^.+\.yaml$/));
+    const examplePath = path.resolve(__dirname + '/example/'); // TODO generalize
+
+    const { config, slides } = await parseYamlFiles(examplePath);
+
+    await createSlides(slides, config);
+
+    process.exit(0);
+}
+
+async function parseYamlFiles(path) {
+    const filesInPath = await listFiles(path);
+    const yamlFiles = filesInPath.filter(f => f.match(/^.+\.yaml$/));
 
     // remove and handle config.yaml
-    const configIndex = categoryFiles.indexOf('config.yaml');
+    const configIndex = yamlFiles.indexOf('config.yaml');
     let config = null;
     if (configIndex !== -1) {
-        const configFile = categoryFiles.splice(configIndex, 1);
-        config = await readFile(examplePath + '/' + configFile)
-            .then( content => yaml.load(content, 'utf8'));
+        const configFile = yamlFiles.splice(configIndex, 1);
+        config = await readYamlFile(path + '/' + configFile);
         config = config || {};
         config.title = config.title || 'Pub Quiz';
     }
 
-    const categoryYamls = await Promise.all(
-        categoryFiles.map(file => {
-            return readFile(examplePath + '/' + file)
-               .then( content => yaml.load(content, 'utf8'))
-        })
+    const categories = await Promise.all(
+        yamlFiles.map(file => readYamlFile(path + '/' + file))
     );
 
     const slides = [];
     let categoryCount = 0;
-    for(const category of categoryYamls) {
+    for(const category of categories) {
         // add category title page first
         slides.push({
             type: 'title',
             ...category.title_page
         });
 
-        if(category.hasOwnProperty('questions') && category.questions.length > 0){
+        if (category.hasOwnProperty('questions') && category.questions.length > 0) {
             // add numbering to questions
             categoryCount++;
             category.questions.forEach((question, index) => {
@@ -52,9 +55,10 @@ async function main() {
         }
     }
 
-    await createSlides(slides, config);
-
-    process.exit(0);
+    return {
+        config,
+        slides
+    };
 }
 
 async function createSlides(slides, config){
@@ -78,10 +82,6 @@ async function render(template, data, options = {}) {
         })
     }));
 }
-
-
-
-
 
 (async function(){
     await main();
