@@ -1,6 +1,10 @@
 # Pub Quiz Generator
 Write your pub quiz questions and answers as YAML code and let this script generate a HTML presentation from it.
 
+An example repository can be found [here](https://github.com/pfirpfel/example-pub-quiz), with the rendered output:
+- [Example presentation](https://pfirpfel.github.io/example-pub-quiz/)
+- [Example presentation with answers visible](https://pfirpfel.github.io/example-pub-quiz/answers.html)
+
 ## Usage
 ```shell
 ./index.js -d example/
