@@ -17,7 +17,7 @@ function parseArgs() {
         .usage('Usage: $0 -d [directory]')
         .alias('d', 'directory')
         .nargs('d', 1)
-        .describe('d', 'Path to config/question directory')
+        .describe('d', 'Path to the question directory')
         .demandOption(['d'])
         .alias('o', 'output')
         .default('o', __dirname + '/output/')
