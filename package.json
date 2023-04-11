@@ -1,11 +1,8 @@
 {
   "name": "pub-quiz-generator",
   "version": "0.0.1",
-  "description": "Generate a pub quiz presentation from yaml",
+  "description": "Write a pub quiz as YAML, compile into HTML presentation",
   "main": "index.js",
-  "directories": {
-    "example": "example"
-  },
   "scripts": {
     "test": "node index.js -d example"
   },
