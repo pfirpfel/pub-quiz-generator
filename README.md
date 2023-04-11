@@ -1,4 +1,4 @@
-# Pub Quiz Generator
+# Pub Quiz Generator [![npm version](https://badge.fury.io/js/pub-quiz-generator.svg)](https://www.npmjs.com/package/pub-quiz-generator)
 Write your pub quiz questions and answers as YAML code and let this script generate a HTML presentation from it.
 
 An example repository can be found [here](https://github.com/pfirpfel/example-pub-quiz), with the rendered output:
