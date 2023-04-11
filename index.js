@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const process = require('node:process');
 const path = require('path');
 const { listFiles, createDirectoryIfNotExists, writeFile, readYamlFile } = require('./src/util');
@@ -7,13 +8,19 @@ const templatesPath = path.resolve(__dirname + '/templates/');
 const outPath = path.resolve(__dirname + '/output/');
 
 async function main() {
-    const examplePath = path.resolve(__dirname + '/example/'); // TODO generalize
+    const argv = require('yargs/yargs')(process.argv.slice(2))
+        .usage('Usage: $0 [directory]')
+        .alias('d', 'directory')
+        .nargs('d', 1)
+        .describe('d', 'Path to config/question directory')
+        .demandOption(['d'])
+        .argv;
 
-    const { config, slides } = await parseYamlFiles(examplePath);
+    const yamlDir = path.resolve(argv.directory);
+
+    const { config, slides } = await parseYamlFiles(yamlDir);
 
     await createSlides(slides, config);
-
-    process.exit(0);
 }
 
 async function parseYamlFiles(path) {
@@ -85,4 +92,5 @@ async function render(template, data, options = {}) {
 
 (async function(){
     await main();
+    process.exit(0);
 })();
