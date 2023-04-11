@@ -1,8 +1,8 @@
 <html>
 <head>
     <title><%= config.title %></title>
-    <link rel="stylesheet" href="../node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="../node_modules/reveal.js/dist/theme/black.css">
+    <link rel="stylesheet" href="<%= config.revealjs_path %>/dist/reveal.css">
+    <link rel="stylesheet" href="<%= config.revealjs_path %>/dist/theme/black.css">
     <%_ if (config.custom_css) { -%>
     <style>
 <%- config.custom_css %>
@@ -34,8 +34,8 @@
         <%_ }); -%>
     </div>
 </div>
-<script src="../node_modules/reveal.js/dist/reveal.js"></script>
-<script src="../node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="<%= config.revealjs_path %>/dist/reveal.js"></script>
+<script src="<%= config.revealjs_path %>/plugin/markdown/markdown.js"></script>
 <script>
     Reveal.initialize({
         controls: false,

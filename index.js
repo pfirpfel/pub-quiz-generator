@@ -48,6 +48,7 @@ async function parseYamlFiles(path) {
         config = await readYamlFile(path + '/' + configFile);
         config = config || {};
         config.title = config.title || 'Pub Quiz';
+        config.revealjs_path = config.revealjs_path || '../node_modules/reveal.js/';
     }
 
     const categories = await Promise.all(
