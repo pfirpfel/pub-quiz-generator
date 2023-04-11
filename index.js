@@ -4,23 +4,36 @@ const path = require('path');
 const { listFiles, createDirectoryIfNotExists, writeFile, readYamlFile } = require('./src/util');
 const ejs = require('ejs');
 
-const templatesPath = path.resolve(__dirname + '/templates/');
-const outPath = path.resolve(__dirname + '/output/');
-
 async function main() {
+    const { yamlDir, templatesPath, outPath } = parseArgs();
+
+    const { config, slides } = await parseYamlFiles(yamlDir);
+
+    await createSlides(slides, config, templatesPath, outPath);
+}
+
+function parseArgs() {
     const argv = require('yargs/yargs')(process.argv.slice(2))
-        .usage('Usage: $0 [directory]')
+        .usage('Usage: $0 -d [directory]')
         .alias('d', 'directory')
         .nargs('d', 1)
         .describe('d', 'Path to config/question directory')
         .demandOption(['d'])
+        .alias('o', 'output')
+        .default('o', __dirname + '/output/')
+        .nargs('o', 1)
+        .describe('o', 'Path to output directory, where the HTML is written to')
+        .alias('t', 'templates')
+        .default('t', __dirname + '/templates/')
+        .nargs('t', 1)
+        .describe('t', 'Path to template directory')
         .argv;
 
-    const yamlDir = path.resolve(argv.directory);
-
-    const { config, slides } = await parseYamlFiles(yamlDir);
-
-    await createSlides(slides, config);
+    return {
+        yamlDir: path.resolve(argv.directory),
+        templatesPath: path.resolve(argv.templates),
+        outPath: path.resolve(argv.output)
+    };
 }
 
 async function parseYamlFiles(path) {
@@ -68,7 +81,7 @@ async function parseYamlFiles(path) {
     };
 }
 
-async function createSlides(slides, config){
+async function createSlides(slides, config, templatesPath, outPath){
     await createDirectoryIfNotExists(outPath);
 
     const quiz = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: false, config }, {});
