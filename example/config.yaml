@@ -1,5 +1,5 @@
 title: Example Pup Quiz
-display_question_numbers: false # TODO re-enable after positioning is fixed
+display_question_numbers: false  # TODO re-enable after positioning is fixed
 # maybe using data-state and state events
 custom_css: |
   .reveal ol { list-style-type: upper-alpha; }
