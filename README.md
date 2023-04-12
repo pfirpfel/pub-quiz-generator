@@ -40,6 +40,7 @@ Options:
 - `display_question_numbers` (boolean): show category/question numbering on question slides. Default: `true`
 - `custom_css` (String): Custom CSS to be injected into the HTML
 - `revealjs_path` (String): Path to reveal.js dependency. Default: `../node_modules/reveal.js/`
+- `revealjs_theme` (String): Reveal.js [theme](https://revealjs.com/themes/). Default: `black`
 
 ### Categories
 All yaml files in the root directory of the question directory other than `config.yaml` will be treated as categories.

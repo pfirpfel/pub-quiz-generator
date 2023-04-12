@@ -2,7 +2,7 @@
 <head>
     <title><%= config.title %></title>
     <link rel="stylesheet" href="<%= config.revealjs_path %>/dist/reveal.css">
-    <link rel="stylesheet" href="<%= config.revealjs_path %>/dist/theme/black.css">
+    <link rel="stylesheet" href="<%= config.revealjs_path %>/dist/theme/<%= config.revealjs_theme %>.css">
     <%_ if (config.custom_css) { -%>
     <style>
 <%- config.custom_css %>

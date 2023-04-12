@@ -49,6 +49,7 @@ async function parseYamlFiles(path) {
         config = config || {};
         config.title = config.title || 'Pub Quiz';
         config.revealjs_path = config.revealjs_path || '../node_modules/reveal.js/';
+        config.revealjs_theme = config.revealjs_theme || 'black';
     }
 
     const categories = await Promise.all(
