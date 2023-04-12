@@ -5,7 +5,7 @@
             <%_ if (question.title) { -%>
                 <h2><%= question.title %></h2>
             <%_ } -%>
-                <video <%_ if(!(question.autoplay === false)){ -%> data-autoplay<% } -%>>
+                <video <%_ if(!(question.controls === false)){ -%> controls<% } -%> <%_ if(!(question.autoplay === false)){ -%> data-autoplay<% } -%>>
                     <source data-src="<%- question.video %>" type="<%- question.video_type %>" />
                 </video>
 

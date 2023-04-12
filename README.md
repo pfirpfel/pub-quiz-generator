@@ -86,6 +86,7 @@ questions: # array of questions, if missing the category will be treated just as
       audio: media/c1q3.mp3 # path to audio file
       audio_type: audio/mp3 # mime type
       autoplay: true # default: true
+      controls: true # display control buttons (volume, seeking, and pause/resume), default: true
       title: Some title # optional, displayed above image
       image: media/c1q3.png # optional,  path to image
       caption: A caption # optional, displayed below image
@@ -96,6 +97,7 @@ questions: # array of questions, if missing the category will be treated just as
       video: media/c1q3.webm # path to video file
       video_type: video/webm # mime type
       autoplay: true # default: true
+      controls: true # display control buttons (volume, seeking, and pause/resume), default: true
       title: Some title # optional, displayed above video
       caption: A caption # optional, displayed below video
       answer: An answer
@@ -119,6 +121,8 @@ questions:
       start: 0:00 # default: 0:00
       end: 1:00 # default: until the end
       cache-file: media/c1q3.webp # default, generated name
+      autoplay: true # default: true
+      controls: true # display control buttons (volume, seeking, and pause/resume), default: true
       title: Some title # optional, displayed above video
       caption: A caption # optional, displayed below video
       answer: An answer
