@@ -20,6 +20,9 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
+      - name: Lint yaml files
+        run: yamllint example
+
       - name: Get pub-quiz-generator version
         run: ./index.js --version
 
