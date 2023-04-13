@@ -1,8 +1,5 @@
-<section data-markdown>
+<section data-markdown data-category-number="<%= question.category_number %>" data-question-number="<%= question.question_number %>">
         <script type="text/template">
-<%_ if (!(config.display_question_numbers === false)) { -%>
-<%= question.category_number %>.<%= question.question_number %> <!-- .element: class="question_number" -->
-<%_ } -%>
 <%_ if (question.title) { -%>
 ## <%= question.title %>
 <%_ } -%>

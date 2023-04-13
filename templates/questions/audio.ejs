@@ -1,7 +1,4 @@
-        <section>
-            <%_ if (!(config.display_question_numbers === false)) { -%>
-                <div class="question_number"><%= question.category_number %>.<%= question.question_number %></div>
-            <%_ } -%>
+        <section data-category-number="<%= question.category_number %>" data-question-number="<%= question.question_number %>">
             <%_ if (question.title) { -%>
                 <h2><%= question.title %></h2>
             <%_ } -%>
