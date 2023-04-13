@@ -109,7 +109,6 @@ questions: # array of questions, if missing the category will be treated just as
 It is recommended to put all media files (images, audio, video) in a folder inside the question directory, like in the example.
 
 # Upcoming features
-- Automate category / question numbering
 - Generate answering and solutions sheets for printing
 - Also start a local HTTP server to serve the presentation
 - Youtube video question type (+dockerize extraction)
