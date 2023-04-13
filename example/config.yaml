@@ -1,9 +1,8 @@
 title: Example Pup Quiz
 display_question_numbers: false  # TODO re-enable after positioning is fixed
 # maybe using data-state and state events
-revealjs_theme: moon
+revealjs_theme: dracula
 custom_css: |
-  .reveal ol { list-style-type: upper-alpha; }
   .answer { color: red }
   .source {
       font-size: x-small;
