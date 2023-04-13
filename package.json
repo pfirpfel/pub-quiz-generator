@@ -3,6 +3,13 @@
   "version": "0.0.3",
   "description": "Write a pub quiz as YAML, compile into HTML presentation",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "src",
+    "templates",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "test": "node index.js -d example"
   },
