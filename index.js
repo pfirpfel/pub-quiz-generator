@@ -65,7 +65,7 @@ async function parseYamlFiles(path) {
             ...category.title_page
         });
 
-        if (category.hasOwnProperty('questions') && category.questions.length > 0) {
+        if (Object.prototype.hasOwnProperty.call(category, 'questions') && category.questions.length > 0) {
             // add numbering to questions
             categoryCount++;
             category.questions.forEach((question, index) => {
