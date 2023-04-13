@@ -10,6 +10,7 @@
     <%_ } -%>
 </head>
 <body>
+<div id="question_number"></div>
 <div class="reveal">
     <div class="slides">
         <%_ questions.forEach(function(question){ -%>
@@ -45,6 +46,15 @@
         keyboard: true,
         plugins: [ RevealMarkdown ]
     });
+    const questionNumberDiv = document.querySelector("#question_number");
+    Reveal.on( 'slidechanged', event => {
+        const data = event.currentSlide.dataset;
+        if ('categoryNumber' in data && 'questionNumber' in data) {
+            questionNumberDiv.innerHTML = `${data.categoryNumber}.${data.questionNumber}`;
+        } else {
+            questionNumberDiv.innerHTML = '';
+        }
+    } );
 </script>
 </body>
 </html>

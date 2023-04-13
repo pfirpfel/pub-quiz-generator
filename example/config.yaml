@@ -11,8 +11,12 @@ custom_css: |
   .source::before {
       content: "Source: ";
   }
-  .question_number { /* TODO */
+  #question_number {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 5%;
+      left: 5%;
+      font-family: var(--r-main-font);
+      font-size: var( --r-heading3-size);
+      font-weight: normal;
+      color: var(--r-main-color);
   }
