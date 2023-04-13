@@ -37,7 +37,6 @@ The configuration file has to be named `config.yaml`. Check out the [example](ex
 
 Options:
 - `title` (String): Used as `<title>`value for the HTML. Default: `Pub Quiz`
-- `display_question_numbers` (boolean): show category/question numbering on question slides. Default: `true`
 - `custom_css` (String): Custom CSS to be injected into the HTML
 - `revealjs_path` (String): Path to reveal.js dependency. Default: `../node_modules/reveal.js/`
 - `revealjs_theme` (String): Reveal.js [theme](https://revealjs.com/themes/). Default: `black`
@@ -107,6 +106,17 @@ questions: # array of questions, if missing the category will be treated just as
 
 ### Media files
 It is recommended to put all media files (images, audio, video) in a folder inside the question directory, like in the example.
+
+## Theme configuration
+Can be done in the `custom_css` property of `config.yaml`.
+
+### Category/question numbering
+To disable category/question numbering, add this rule to the `custom_css` property:
+```css
+  #question_number {
+      display: none;
+  }
+```
 
 # Upcoming features
 - Generate answering and solutions sheets for printing
