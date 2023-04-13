@@ -4,7 +4,8 @@
   "description": "Write a pub quiz as YAML, compile into HTML presentation",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js -d example"
+    "test": "node index.js -d example",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,8 @@
     "js-yaml": "^4.1.0",
     "reveal.js": "^4.4.0",
     "yargs": "^17.7.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0"
   }
 }
