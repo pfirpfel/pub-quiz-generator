@@ -9,3 +9,18 @@ questions:
     caption: Who composed this song?
     answer: Ludwig van Beethoven
     source: United States Navy Band, Public Domain
+
+  - type: youtube-dl # question with a video file automatically extracted from youtube
+    url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    hasVideo: true # default: true
+    hasAudio: true # default: true
+    start: 0:00 # default: 0:00
+    end: 1:00 # default: until the end
+    outputPath: example/media/
+    fileBaseName: dQw4w9WgXcQ # default, generated name
+    autoplay: true # default: true
+    controls: true # display control buttons (volume, seeking, and pause/resume), default: true
+    title: Some title # optional, displayed above video
+    caption: A caption # optional, displayed below video
+    answer: An answer
+    source: https://www.youtube.com/watch?v=dQw4w9WgXcQ # defaults to url

@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 const process = require('node:process');
 const path = require('path');
-const { listFiles, createDirectoryIfNotExists, writeFile, readYamlFile } = require('./src/util');
+const { listFiles, createDirectoryIfNotExists, writeFile, readYamlFile, findFile } = require('./src/util');
+const { download, checkDependencies } = require('./src/youtube-dl');
 const ejs = require('ejs');
 
 async function main() {
@@ -9,7 +10,9 @@ async function main() {
 
     const { config, slides } = await parseYamlFiles(yamlDir);
 
-    await createSlides(slides, config, templatesPath, outPath);
+    const processedSlides = await downloadYoutubeMedia(slides);
+
+    await createSlides(processedSlides, config, templatesPath, outPath);
 }
 
 function parseArgs() {
@@ -91,6 +94,58 @@ async function createSlides(slides, config, templatesPath, outPath){
 
     await writeFile(quiz, outPath + '/index.html');
     await writeFile(answers, outPath + '/answers.html');
+}
+
+async function downloadYoutubeMedia(slides) {
+    let dependenciesInstalled = false;
+    for(let index = 0; index < slides.length; index++) {
+        const question = slides[index];
+        // skip if non-youtube
+        if (question.type !== 'youtube-dl') continue;
+
+        // check dependencies on first run
+        if(!dependenciesInstalled) {
+            dependenciesInstalled = await checkDependencies()
+        }
+
+        // check if already downloaded
+        let fileName = await findFile(question.outputPath, question.fileBaseName);
+        if (fileName === null) {
+            const properties = {
+                outputPath: question.outputPath,
+                fileBaseName: question.fileBaseName,
+            };
+            if (question.start) {
+                properties.start = question.start;
+            }
+            if (question.end) {
+                properties.end = question.end;
+            }
+            if (question.hasVideo) {
+                properties.hasVideo = question.hasVideo;
+            }
+            if (question.hasAudio) {
+                properties.hasAudio = question.hasAudio;
+            }
+            await download(question.url, properties);
+            fileName = await findFile(question.outputPath, question.fileBaseName);
+        }
+        const transformed = Object.assign({}, question);
+        // transform question
+        const fileExtension = String(fileName).split('.').pop();
+        const filePath = transformed.outputPath + '/' + transformed.fileBaseName + '.' + fileExtension;
+        if (transformed.hasVideo) {
+            transformed.type = 'video';
+            transformed.video = filePath;
+            transformed.video_type = 'video/' + fileExtension;
+        } else {
+            transformed.type = 'video';
+            transformed.audio = filePath;
+            transformed.audio_type = 'audio/' + fileExtension;
+        }
+        slides[index] = transformed;
+    }
+    return slides;
 }
 
 async function render(template, data, options = {}) {
