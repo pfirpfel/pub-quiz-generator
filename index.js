@@ -10,7 +10,7 @@ async function main() {
 
     const { config, slides } = await parseYamlFiles(yamlDir);
 
-    const processedSlides = await downloadYoutubeMedia(slides);
+    const processedSlides = await downloadYoutubeMedia(slides, yamlDir);
 
     await createSlides(processedSlides, config, templatesPath, outPath);
 }
@@ -96,7 +96,7 @@ async function createSlides(slides, config, templatesPath, outPath){
     await writeFile(answers, outPath + '/answers.html');
 }
 
-async function downloadYoutubeMedia(slides) {
+async function downloadYoutubeMedia(slides, yamlDir) {
     let dependenciesInstalled = false;
     for(let index = 0; index < slides.length; index++) {
         const question = slides[index];
@@ -107,12 +107,12 @@ async function downloadYoutubeMedia(slides) {
         if(!dependenciesInstalled) {
             dependenciesInstalled = await checkDependencies()
         }
-
+        const fileDirectory = path.resolve(yamlDir + '/' +question.outputPath);
         // check if already downloaded
-        let fileName = await findFile(question.outputPath, question.fileBaseName);
+        let fileName = await findFile(fileDirectory, question.fileBaseName);
         if (fileName === null) {
             const properties = {
-                outputPath: question.outputPath,
+                outputPath: fileDirectory,
                 fileBaseName: question.fileBaseName,
             };
             if (question.start) {
@@ -128,7 +128,7 @@ async function downloadYoutubeMedia(slides) {
                 properties.hasAudio = question.hasAudio;
             }
             await download(question.url, properties);
-            fileName = await findFile(question.outputPath, question.fileBaseName);
+            fileName = await findFile(fileDirectory, question.fileBaseName);
         }
         const transformed = Object.assign({}, question);
         // transform question

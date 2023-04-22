@@ -7,13 +7,13 @@ questions:
       answer: Berlin
 
     - type: image
-      image: ../example/media/capital2.jpg
+      image: media/capital2.jpg
       answer: Paris
       source: Daniela Kloth, GFDL 1.2
 
     - type: image
       title: Hmm...
-      image: ../example/media/capital3.jpg
+      image: media/capital3.jpg
       answer: Tokyo
       source: Asanagi, Public Domain
 

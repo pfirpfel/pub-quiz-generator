@@ -11,8 +11,13 @@
     "README.md"
   ],
   "scripts": {
-    "test": "node index.js -d example",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "clean": "rimraf -rf ./output",
+    "build-quiz": "node index.js -d ./example -o ./output",
+    "copy-media": "cp -r ./example/media ./output",
+    "copy-revealjs": "mkdirp ./output/reveal.js/ && cp -r ./node_modules/reveal.js/dist ./output/reveal.js/dist && cp -r ./node_modules/reveal.js/plugin ./output/reveal.js/",
+    "test": "npm run build-quiz",
+    "build": "npm run clean && npm run build-quiz && npm run copy-media && npm run copy-revealjs"
   },
   "repository": {
     "type": "git",
@@ -31,7 +36,9 @@
     "yargs": "^17.7.1"
   },
   "devDependencies": {
-    "eslint": "^8.38.0"
+    "eslint": "^8.38.0",
+    "rimraf": "^5.0.0",
+    "mkdirp": "^3.0.0"
   },
   "optionalDependencies": {
     "bin-version-check": "^5.0.0",

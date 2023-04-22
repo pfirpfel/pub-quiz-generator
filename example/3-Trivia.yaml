@@ -3,7 +3,7 @@ title_page:
 
 questions:
   - type: audio
-    audio: ../example/media/trivia1.ogg
+    audio: media/trivia1.ogg
     audio_type: audio/ogg
     title: Music
     caption: Who composed this song?
@@ -16,7 +16,7 @@ questions:
     hasAudio: true # default: true
     start: 0:00 # default: 0:00
     end: 1:00 # default: until the end
-    outputPath: example/media/
+    outputPath: media/
     fileBaseName: dQw4w9WgXcQ # default, generated name
     autoplay: true # default: true
     controls: true # display control buttons (volume, seeking, and pause/resume), default: true
