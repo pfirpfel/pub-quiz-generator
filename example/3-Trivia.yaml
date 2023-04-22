@@ -10,7 +10,7 @@ questions:
     answer: Ludwig van Beethoven
     source: United States Navy Band, Public Domain
 
-  - type: youtube-dl # question with a video file automatically extracted from youtube
+  - type: youtube-dl # question with a video file automatically extracted from YouTube
     url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
     hasVideo: true # default: true
     hasAudio: true # default: true

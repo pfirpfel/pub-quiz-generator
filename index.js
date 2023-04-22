@@ -139,7 +139,7 @@ async function downloadYoutubeMedia(slides, yamlDir) {
             transformed.video = filePath;
             transformed.video_type = 'video/' + fileExtension;
         } else {
-            transformed.type = 'video';
+            transformed.type = 'audio';
             transformed.audio = filePath;
             transformed.audio_type = 'audio/' + fileExtension;
         }
