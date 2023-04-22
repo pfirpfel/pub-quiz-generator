@@ -10,7 +10,8 @@ questions:
     answer: Ludwig van Beethoven
     source: United States Navy Band, Public Domain
 
-  - type: youtube-dl # question with a video file automatically extracted from YouTube
+  # question with a video file automatically extracted from YouTube
+  - type: youtube-dl
     url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
     hasVideo: true # default: true
     hasAudio: true # default: true
@@ -19,8 +20,8 @@ questions:
     outputPath: media/
     fileBaseName: dQw4w9WgXcQ # default, generated name
     autoplay: true # default: true
-    controls: true # display control buttons (volume, seeking, and pause/resume), default: true
+    controls: true
     title: Some title # optional, displayed above video
     caption: A caption # optional, displayed below video
     answer: An answer
-    source: https://www.youtube.com/watch?v=dQw4w9WgXcQ # defaults to url
+    source: https://www.youtube.com/watch?v=dQw4w9WgXcQ
