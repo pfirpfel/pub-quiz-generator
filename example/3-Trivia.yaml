@@ -10,18 +10,19 @@ questions:
     answer: Ludwig van Beethoven
     source: United States Navy Band, Public Domain
 
-  # question with a video file automatically extracted from YouTube
-  - type: youtube-dl
-    url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-    hasVideo: true
-    hasAudio: true
-    start: 0:00
-    end: 1:00
-    outputPath: media/
-    fileBaseName: dQw4w9WgXcQ
-    autoplay: true
-    controls: true
-    title: Some title
-    caption: A caption
-    answer: An answer
-    source: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+#  question with a video file automatically extracted from YouTube
+#  commented-out to exclude from GitHub test workflow
+#  - type: youtube-dl
+#    url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+#    hasVideo: true
+#    hasAudio: true
+#    start: 0:00
+#    end: 1:00
+#    outputPath: media/
+#    fileBaseName: dQw4w9WgXcQ
+#    autoplay: true
+#    controls: true
+#    title: Some title
+#    caption: A caption
+#    answer: An answer
+#    source: https://www.youtube.com/watch?v=dQw4w9WgXcQ
