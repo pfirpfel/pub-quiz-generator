@@ -23,11 +23,11 @@ function parseArgs() {
         .describe('d', 'Path to the question directory')
         .demandOption(['d'])
         .alias('o', 'output')
-        .default('o', __dirname + '/output/')
+        .default('o', path.resolve(__dirname + '/output/'))
         .nargs('o', 1)
         .describe('o', 'Path to output directory, where the HTML is written to')
         .alias('t', 'templates')
-        .default('t', __dirname + '/templates/')
+        .default('t', path.resolve(__dirname + '/templates/'))
         .nargs('t', 1)
         .describe('t', 'Path to template directory')
         .argv;
