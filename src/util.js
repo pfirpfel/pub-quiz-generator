@@ -44,6 +44,17 @@ exports.listFiles =  async function(path) {
     }));
 }
 
+exports.findFile = async function(path, baseName) {
+    return exports.listFiles(path).then(files => {
+        for(let file of files) {
+            if (String(file).startsWith(baseName)){
+                return file;
+            }
+        }
+        return null;
+    });
+}
+
 exports.readYamlFile = async function(path) {
     return readFile(path)
         .then( content => yaml.load(content, 'utf8'));

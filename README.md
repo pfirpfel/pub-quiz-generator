@@ -19,6 +19,14 @@ Options:
 - `-o, --output`: Path to output directory, where the HTML is written to
 - `-t, --templates`: Path to template directory, if custom templates are needed
 
+## Dependencies
+- [Node.js](https://nodejs.org/en/download)
+
+Optional (for YouTube question type):
+- [Python 3.x](https://www.python.org/downloads/)
+- [ffmpeg](https://ffmpeg.org/download.html)
+
+
 ## Question directory
 Folder structure:
 ```
@@ -102,6 +110,21 @@ questions: # array of questions, if missing the category will be treated just as
       caption: A caption # optional, displayed below video
       answer: An answer
       source: Artist, License # optional, displayed on the bottom in small font
+
+    - type: youtube-dl # downloads media from YouTube
+      url: https://www.youtube.com/watch?v=dQw4w9WgXcQ # YouTube URL
+      hasVideo: true # default: true
+      hasAudio: true # default: true
+      start: 0:00 # default: 0:00
+      end: 1:00 # default: until the end
+      outputPath: media/
+      fileBaseName: dQw4w9WgXcQ  # file extension (.mp4 for example) will be added automatically
+      autoplay: true # default: true
+      controls: true
+      title: Some title # optional, displayed above video
+      caption: A caption # optional, displayed below video
+      answer: An answer
+      source: https://www.youtube.com/watch?v=dQw4w9WgXcQ # optional, displayed on the bottom in small font
 ```
 
 ### Media files
@@ -121,20 +144,3 @@ To disable category/question numbering, add this rule to the `custom_css` proper
 # Upcoming features
 - Generate answering and solutions sheets for printing
 - Also start a local HTTP server to serve the presentation
-- Youtube video question type (+dockerize extraction)
-```yaml
-questions:
-    - type: youtube-dl # question with a video file automatically extracted from youtube
-      url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-      video: true # default: true
-      audio: true # default: true
-      start: 0:00 # default: 0:00
-      end: 1:00 # default: until the end
-      cache-file: media/c1q3.webp # default, generated name
-      autoplay: true # default: true
-      controls: true # display control buttons (volume, seeking, and pause/resume), default: true
-      title: Some title # optional, displayed above video
-      caption: A caption # optional, displayed below video
-      answer: An answer
-      source: https://www.youtube.com/watch?v=dQw4w9WgXcQ # defaults to url
-```
