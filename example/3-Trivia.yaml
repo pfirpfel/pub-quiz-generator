@@ -13,15 +13,15 @@ questions:
   # question with a video file automatically extracted from YouTube
   - type: youtube-dl
     url: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-    hasVideo: true # default: true
-    hasAudio: true # default: true
-    start: 0:00 # default: 0:00
-    end: 1:00 # default: until the end
+    hasVideo: true
+    hasAudio: true
+    start: 0:00
+    end: 1:00
     outputPath: media/
-    fileBaseName: dQw4w9WgXcQ # default, generated name
-    autoplay: true # default: true
+    fileBaseName: dQw4w9WgXcQ
+    autoplay: true
     controls: true
-    title: Some title # optional, displayed above video
-    caption: A caption # optional, displayed below video
+    title: Some title
+    caption: A caption
     answer: An answer
     source: https://www.youtube.com/watch?v=dQw4w9WgXcQ
