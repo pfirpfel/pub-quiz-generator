@@ -19,6 +19,14 @@ Options:
 - `-o, --output`: Path to output directory, where the HTML is written to
 - `-t, --templates`: Path to template directory, if custom templates are needed
 
+## Dependencies
+- [Node.js](https://nodejs.org/en/download)
+
+Optional (for YouTube question type):
+- [Python 3.x](https://www.python.org/downloads/)
+- [ffmpeg](https://ffmpeg.org/download.html)
+
+
 ## Question directory
 Folder structure:
 ```
@@ -103,7 +111,7 @@ questions: # array of questions, if missing the category will be treated just as
       answer: An answer
       source: Artist, License # optional, displayed on the bottom in small font
 
-    - type: youtube-dl # downloads media from youtube
+    - type: youtube-dl # downloads media from YouTube
       url: https://www.youtube.com/watch?v=dQw4w9WgXcQ # YouTube URL
       hasVideo: true # default: true
       hasAudio: true # default: true
