@@ -2,18 +2,24 @@
             <%_ if (question.title) { -%>
                 <h2><%= question.title %></h2>
             <%_ } -%>
-                <audio <%_ if(!(question.controls === false)){ -%> controls<% } -%> <%_ if(!(question.autoplay === false)){ -%> data-autoplay<% } -%>>
-                    <source data-src="<%- question.audio %>" type="<%- question.audio_type %>" />
-                </audio>
-
-            <%_ if (question.image) { -%>
-                <img class="r-stretch" data-src="<%- question.image %>">
+            <%_ if (isAnswer && Boolean(question.answer_image)) { -%>
+                <%_ if (question.image) { -%>
+                    <img class="fragment fade-out r-stretch" data-fragment-index="1" data-src="<%- question.image %>">
+                <%_ } -%>
+                <img class="fragment r-stretch" data-fragment-index="1" data-src="<%- question.answer_image %>">
+            <%_ } else { -%>
+                <%_ if (question.image) { -%>
+                    <img class="r-stretch" data-src="<%- question.image %>">
+                <%_ } -%>
             <%_ } -%>
+            <audio <%_ if(!(question.controls === false)){ -%> controls<% } -%> <%_ if(!(question.autoplay === false)){ -%> data-autoplay<% } -%>>
+                <source data-src="<%- question.audio %>" type="<%- question.audio_type %>" />
+            </audio>
             <%_ if (question.caption) { -%>
                 <p class="caption"><%= question.caption %></p>
             <%_ } -%>
             <%_ if (isAnswer) { -%>
-                <p class="fragment answer"><%= question.answer %></p>
+                <p class="fragment answer" data-fragment-index="1"><%= question.answer %></p>
             <%_ } -%>
             <%_ if (question.source) { -%>
                 <p class="source"><%= question.source %></p>

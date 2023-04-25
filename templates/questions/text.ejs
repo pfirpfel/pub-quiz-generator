@@ -2,9 +2,12 @@
             <%_ if (question.title) { -%>
                 <h2><%= question.title %></h2>
             <%_ } -%>
+            <%_ if (isAnswer && Boolean(question.answer_image)) { -%>
+                <img class="fragment r-stretch" data-fragment-index="1" data-src="<%- question.answer_image %>">
+            <%_ } -%>
             <p><%= question.question %></p>
             <%_ if (isAnswer) { -%>
-                <p class="fragment answer"><%= question.answer %></p>
+                <p class="fragment answer" data-fragment-index="1"><%= question.answer %></p>
             <%_ } -%>
             <%_ if (question.source) { -%>
                 <p class="source"><%= question.source %></p>

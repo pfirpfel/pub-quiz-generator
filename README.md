@@ -72,6 +72,7 @@ questions: # array of questions, if missing the category will be treated just as
       title: Capital cities # optional
       question: What is the capital of Germany?
       answer: Berlin
+      answer_image: media/berlin.jpg # optional, image that shows up together with answer
       source: https://en.wikipedia.org/wiki/Germany # optional, displayed on the bottom in small font
     
     - type: markdown # markdown allows more formatting options
@@ -88,6 +89,7 @@ questions: # array of questions, if missing the category will be treated just as
       image: media/c1q3.png # path to image
       caption: A caption # optional, displayed below image
       answer: An answer
+      answer_image: media/answer_image.jpg # optional, image that replaces initial image once answer is revealed
       source: Artist, License # optional, displayed on the bottom in small font
     
     - type: audio # question with an audio file
@@ -96,9 +98,10 @@ questions: # array of questions, if missing the category will be treated just as
       autoplay: true # default: true
       controls: true # display control buttons (volume, seeking, and pause/resume), default: true
       title: Some title # optional, displayed above image
-      image: media/c1q3.png # optional,  path to image
+      image: media/c1q3.png # optional, path to image, shown above audio controls
       caption: A caption # optional, displayed below image
       answer: An answer
+      answer_image: media/answer_image.jpg # optional, image that replaces initial image once answer is revealed; initial image not required
       source: Artist, License # optional, displayed on the bottom in small font
     
     - type: video # question with a video file
@@ -109,6 +112,7 @@ questions: # array of questions, if missing the category will be treated just as
       title: Some title # optional, displayed above video
       caption: A caption # optional, displayed below video
       answer: An answer
+      answer_image: media/answer_image.jpg # optional, image that replaces video once answer is revealed
       source: Artist, License # optional, displayed on the bottom in small font
 
     - type: youtube-dl # downloads media from YouTube
@@ -123,7 +127,9 @@ questions: # array of questions, if missing the category will be treated just as
       controls: true
       title: Some title # optional, displayed above video
       caption: A caption # optional, displayed below video
+      image: media/image.png # optional, path to image, shown above audio controls (only displayed if no video!)
       answer: An answer
+      answer_image: media/answer_image.jpg # optional, image that replaces video once answer is revealed
       source: https://www.youtube.com/watch?v=dQw4w9WgXcQ # optional, displayed on the bottom in small font
 ```
 

@@ -2,18 +2,21 @@
             <%_ if (question.title) { -%>
                 <h2><%= question.title %></h2>
             <%_ } -%>
+            <%_ if (isAnswer && Boolean(question.answer_image)) { -%>
+                <video class="fragment fade-out" data-fragment-index="1" <%_ if(!(question.controls === false)){ -%> controls<% } -%> <%_ if(!(question.autoplay === false)){ -%> data-autoplay<% } -%>>
+                    <source data-src="<%- question.video %>" type="<%- question.video_type %>" />
+                </video>
+                <img class="fragment r-stretch" data-fragment-index="1" data-src="<%- question.answer_image %>">
+            <%_ } else { -%>
                 <video <%_ if(!(question.controls === false)){ -%> controls<% } -%> <%_ if(!(question.autoplay === false)){ -%> data-autoplay<% } -%>>
                     <source data-src="<%- question.video %>" type="<%- question.video_type %>" />
                 </video>
-
-            <%_ if (question.image) { -%>
-                <img class="r-stretch" data-src="<%- question.image %>">
             <%_ } -%>
             <%_ if (question.caption) { -%>
                 <p class="caption"><%= question.caption %></p>
             <%_ } -%>
             <%_ if (isAnswer) { -%>
-                <p class="fragment answer"><%= question.answer %></p>
+                <p class="fragment answer" data-fragment-index="1"><%= question.answer %></p>
             <%_ } -%>
             <%_ if (question.source) { -%>
                 <p class="source"><%= question.source %></p>

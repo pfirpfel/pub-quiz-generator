@@ -8,6 +8,7 @@ questions:
     title: Music
     caption: Who composed this song?
     answer: Ludwig van Beethoven
+    answer_image: media/trivia1-solution.jpg
     source: United States Navy Band, Public Domain
 
 #  question with a video file automatically extracted from YouTube
