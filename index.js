@@ -121,12 +121,8 @@ async function downloadYoutubeMedia(slides, yamlDir) {
             if (question.end) {
                 properties.end = question.end;
             }
-            if (question.hasVideo) {
-                properties.hasVideo = question.hasVideo;
-            }
-            if (question.hasAudio) {
-                properties.hasAudio = question.hasAudio;
-            }
+            properties.hasVideo = question.hasVideo ?? true;
+            properties.hasAudio = question.hasAudio ?? true;
             await download(question.url, properties);
             fileName = await findFile(fileDirectory, question.fileBaseName);
         }
