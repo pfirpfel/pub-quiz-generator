@@ -5,7 +5,7 @@ revealjs_theme: dracula
 custom_css: |
   .answer { color: red }
   .source {
-      font-size: x-small;
+      font-size: calc(var(--r-main-font-size) * 0.75);
   }
   .source::before {
       content: "Source: ";
