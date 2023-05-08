@@ -1,0 +1,14 @@
+title_pages:
+  - title: Example Pub quiz
+    caption: |
+      No phones!
+
+  - title: Rules
+    markdown: |
+      - No more than 5 people per team
+      - No phones
+      - Drink!
+
+      ```js
+        console.log("huhu");
+      ```

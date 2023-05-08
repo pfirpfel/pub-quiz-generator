@@ -127,6 +127,20 @@ questions: # array of questions, if missing the category will be treated just as
       source: https://www.youtube.com/watch?v=dQw4w9WgXcQ # optional, displayed on the bottom in small font
 ```
 
+#### Multiple title pages in a single category
+A category can have multiple title pages. To achieve this, replace the `title_page` attribute with `title_pages`.
+There you can supply an array of title pages. Example:
+```yaml
+title_pages:
+  - title: Example Pub quiz
+
+  - title: Rules
+    markdown: |
+      - No more than 5 people per team
+      - No phones
+      - Drink!
+```
+
 ### Media files
 It is recommended to put all media files (images, audio, video) in a folder inside the question directory, like in the example.
 

@@ -63,10 +63,19 @@ async function parseYamlFiles(path) {
     let categoryCount = 0;
     for(const category of categories) {
         // add category title page first
-        slides.push({
-            type: 'title',
-            ...category.title_page
-        });
+        if (Object.prototype.hasOwnProperty.call(category, 'title_pages')) {
+            // in case of multiple title pages
+            slides.push(...category.title_pages.map(page => {
+                page.type = 'title';
+                return page;
+            }));
+        } else {
+            // single title page
+            slides.push({
+                type: 'title',
+                ...category.title_page
+            });
+        }
 
         if (Object.prototype.hasOwnProperty.call(category, 'questions') && category.questions.length > 0) {
             // add numbering to questions
