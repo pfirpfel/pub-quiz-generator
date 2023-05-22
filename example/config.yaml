@@ -1,4 +1,5 @@
 title: Example Pup Quiz
+worksheet_title: Example Pup Quiz
 display_question_numbers: false  # TODO re-enable after positioning is fixed
 # maybe using data-state and state events
 revealjs_theme: dracula

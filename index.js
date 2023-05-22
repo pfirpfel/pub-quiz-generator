@@ -8,11 +8,11 @@ const ejs = require('ejs');
 async function main() {
     const { yamlDir, templatesPath, outPath } = parseArgs();
 
-    const { config, slides } = await parseYamlFiles(yamlDir);
+    const { config, slides, worksheetCategories } = await parseYamlFiles(yamlDir);
 
     const processedSlides = await downloadYoutubeMedia(slides, yamlDir);
 
-    await createSlides(processedSlides, config, templatesPath, outPath);
+    await createSlides(processedSlides, worksheetCategories, config, templatesPath, outPath);
 }
 
 function parseArgs() {
@@ -60,6 +60,7 @@ async function parseYamlFiles(path) {
     );
 
     const slides = [];
+    const worksheetCategories = [];
     let categoryCount = 0;
     for(const category of categories) {
         // add category title page first
@@ -86,23 +87,31 @@ async function parseYamlFiles(path) {
             });
             // add questions
             slides.push(...category.questions);
+
+            const solutions = category.questions.map(question => question.answer);
+            worksheetCategories.push(solutions);
         }
     }
 
     return {
         config,
-        slides
+        slides,
+        worksheetCategories
     };
 }
 
-async function createSlides(slides, config, templatesPath, outPath){
+async function createSlides(slides, worksheetCategories, config, templatesPath, outPath){
     await createDirectoryIfNotExists(outPath);
 
     const quiz = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: false, config }, {});
     const answers = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: true, config }, {});
+    const worksheet = await render(templatesPath + '/worksheet.ejs', { worksheetCategories: worksheetCategories, isAnswer: false, config }, {});
+    const solutionsheet = await render(templatesPath + '/worksheet.ejs', { worksheetCategories: worksheetCategories, isAnswer: true, config }, {});
 
     await writeFile(quiz, outPath + '/index.html');
     await writeFile(answers, outPath + '/answers.html');
+    await writeFile(worksheet, outPath + '/worksheet.html');
+    await writeFile(solutionsheet, outPath + '/solutionsheet.html');
 }
 
 async function downloadYoutubeMedia(slides, yamlDir) {
