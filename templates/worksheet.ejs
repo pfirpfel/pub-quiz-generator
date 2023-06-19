@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <%_ if (isAnswer) { -%>
     <title>Result Sheet</title>
+    <%_ } else { -%>
+    <title>Worksheet</title>
+    <%_ } -%>
     <style>
         body {
             font-family: arial, sans-serif;
@@ -37,15 +41,35 @@
                 page-break-inside: avoid;
                 break-inside: avoid;
             }
+            .break-after {
+                break-after: page;
+            }
         }
     </style>
 </head>
 <body>
-<h2><%= config.worksheet_title %></h2>
+<%_ const maxQuestionsPerPage = 32; -%>
+<%_ let pageQuestionCount = 0; -%>
 <%_ for(let categoryIndex = 0; categoryIndex < worksheetCategories.length; categoryIndex++){ -%>
-<table>
-    <tbody>
+
     <%_ const category = worksheetCategories[categoryIndex]; -%>
+    <%_ if (pageQuestionCount === 0 || (pageQuestionCount + category.length) > maxQuestionsPerPage) { -%>
+        <%_ pageQuestionCount = 0; -%>
+        <%_ if (categoryIndex !== 0) { -%>
+        </tbody>
+    </table>
+        <%_ } -%>
+    <h2><%= config.worksheet_title %></h2>
+    <%_ } -%>
+
+
+    <%_ pageQuestionCount += category.length; -%>
+    <%_ if (pageQuestionCount >= maxQuestionsPerPage) { -%>
+    <table class="break-after">
+    <%_ } else { -%>
+    <table>
+    <%_ } -%>
+        <tbody>
     <%_ for(let questionIndex = 0; questionIndex < category.length; questionIndex++){ -%>
     <tr>
         <td class="number"><%= categoryIndex + 1 %>.<%= questionIndex + 1 %></td>
@@ -56,8 +80,8 @@
         <%_ } -%>
     </tr>
     <%_ } -%>
-    </tbody>
-</table>
+        </tbody>
+    </table>
 <%_ } -%>
 </body>
 </html>
