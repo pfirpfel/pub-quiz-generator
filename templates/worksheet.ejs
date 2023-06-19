@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <%_ if (isAnswer) { -%>
+    <title>Result Sheet</title>
+    <%_ } else { -%>
+    <title>Worksheet</title>
+    <%_ } -%>
+    <style>
+        body {
+            font-family: arial, sans-serif;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        table {
+            margin-top: 20px;
+            font-size: 16px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #000;
+            text-align: left;
+            padding: 17px 10px 17px 10px;
+        }
+
+        .number {
+            width: 1%;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #eeeeee;
+        }
+
+        @media print {
+            table {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            .break-after {
+                break-after: page;
+            }
+        }
+    </style>
+</head>
+<body>
+<%_ const maxQuestionsPerPage = 32; -%>
+<%_ let pageQuestionCount = 0; -%>
+<%_ for(let categoryIndex = 0; categoryIndex < worksheetCategories.length; categoryIndex++){ -%>
+
+    <%_ const category = worksheetCategories[categoryIndex]; -%>
+    <%_ if (pageQuestionCount === 0 || (pageQuestionCount + category.length) > maxQuestionsPerPage) { -%>
+        <%_ pageQuestionCount = 0; -%>
+        <%_ if (categoryIndex !== 0) { -%>
+        </tbody>
+    </table>
+        <%_ } -%>
+    <h2><%= config.worksheet_title %></h2>
+    <%_ } -%>
+
+
+    <%_ pageQuestionCount += category.length; -%>
+    <%_ if (pageQuestionCount >= maxQuestionsPerPage) { -%>
+    <table class="break-after">
+    <%_ } else { -%>
+    <table>
+    <%_ } -%>
+        <tbody>
+    <%_ for(let questionIndex = 0; questionIndex < category.length; questionIndex++){ -%>
+    <tr>
+        <td class="number"><%= categoryIndex + 1 %>.<%= questionIndex + 1 %></td>
+        <%_ if (isAnswer) { -%>
+        <td><%= category[questionIndex] %></td>
+        <%_ } else { -%>
+        <td></td>
+        <%_ } -%>
+    </tr>
+    <%_ } -%>
+        </tbody>
+    </table>
+<%_ } -%>
+</body>
+</html>

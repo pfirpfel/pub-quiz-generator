@@ -10,9 +10,11 @@ An example repository can be found [here](https://github.com/pfirpfel/example-pu
 ./index.js -d example/
 ```
 
-This will create an `output` directory with two files:
+This will create an `output` directory with following files:
 - `index.html` Main Pub Quiz presentation
 - `answers.html` Pub Quiz presentation with answers visible
+- `worksheet.html` Worksheet for the player teams, intended for print
+- `solutionsheet.html` Solutions in worksheet form, intended for print
 
 Options:
 - `-d, --directory`: Path to the question directory (required)
@@ -45,6 +47,7 @@ The configuration file has to be named `config.yaml`. Check out the [example](ex
 
 Options:
 - `title` (String): Used as `<title>`value for the HTML. Default: `Pub Quiz`
+- `worksheet_title`: Title on each worksheet
 - `custom_css` (String): Custom CSS to be injected into the HTML
 - `revealjs_path` (String): Path to reveal.js dependency. Default: `../node_modules/reveal.js/`
 - `revealjs_theme` (String): Reveal.js [theme](https://revealjs.com/themes/). Default: `black`
@@ -154,7 +157,3 @@ To disable category/question numbering, add this rule to the `custom_css` proper
       display: none;
   }
 ```
-
-# Upcoming features
-- Generate answering and solutions sheets for printing
-- Also start a local HTTP server to serve the presentation
