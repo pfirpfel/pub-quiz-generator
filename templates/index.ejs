@@ -51,6 +51,8 @@
         const data = event.currentSlide.dataset;
         if ('categoryNumber' in data && 'questionNumber' in data) {
             questionNumberDiv.innerHTML = `${data.categoryNumber}.${data.questionNumber}`;
+        } else if ('categoryNumber' in data && data.categoryNumber !== "") {
+            questionNumberDiv.innerHTML = `${data.categoryNumber}`;
         } else {
             questionNumberDiv.innerHTML = '';
         }

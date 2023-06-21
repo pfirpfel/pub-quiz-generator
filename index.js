@@ -63,24 +63,33 @@ async function parseYamlFiles(path) {
     const worksheetCategories = [];
     let categoryCount = 0;
     for(const category of categories) {
+        let hasQuestions = false;
+        if (Object.prototype.hasOwnProperty.call(category, 'questions') && category.questions.length > 0) {
+            categoryCount++;
+            hasQuestions = true;
+        }
+
         // add category title page first
         if (Object.prototype.hasOwnProperty.call(category, 'title_pages')) {
             // in case of multiple title pages
             slides.push(...category.title_pages.map(page => {
                 page.type = 'title';
+                if (hasQuestions) {
+                    page.category_number = categoryCount;
+                }
                 return page;
             }));
         } else {
             // single title page
             slides.push({
                 type: 'title',
+                category_number: hasQuestions ? categoryCount: undefined,
                 ...category.title_page
             });
         }
 
-        if (Object.prototype.hasOwnProperty.call(category, 'questions') && category.questions.length > 0) {
+        if (hasQuestions) {
             // add numbering to questions
-            categoryCount++;
             category.questions.forEach((question, index) => {
                 question.category_number = categoryCount;
                 question.question_number = index + 1;
