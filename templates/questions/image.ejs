@@ -6,8 +6,10 @@
             <%_ if (question.caption) { -%>
                 <p class="caption"><%= question.caption %></p>
             <%_ } -%>
-            <%_ if (isAnswer) { -%>
+            <%_ if (isAnswer && !question.hide_answer) { -%>
                 <p class="fragment answer"><%= question.answer %></p>
+            <%_ } else if (isAnswer && question.immediatly_show_answer) { -%>
+                <p class="answer"><%= question.answer %></p>
             <%_ } -%>
             <%_ if (question.source) { -%>
                 <p class="source"><%= question.source %></p>
