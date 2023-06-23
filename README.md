@@ -90,6 +90,7 @@ questions: # array of questions, if missing the category will be treated just as
       title: Some title # optional, displayed above image
       image: media/c1q3.png # path to image
       caption: A caption # optional, displayed below image
+      answer_image: media/c1q3.png # path to answer_image, creates additional solution slide
       answer: An answer
       source: Artist, License # optional, displayed on the bottom in small font
     
@@ -101,6 +102,7 @@ questions: # array of questions, if missing the category will be treated just as
       title: Some title # optional, displayed above image
       image: media/c1q3.png # optional,  path to image
       caption: A caption # optional, displayed below image
+      answer_image: media/c1q3.png # path to answer_image, creates additional solution slide
       answer: An answer
       source: Artist, License # optional, displayed on the bottom in small font
     
@@ -111,6 +113,7 @@ questions: # array of questions, if missing the category will be treated just as
       controls: true # display control buttons (volume, seeking, and pause/resume), default: true
       title: Some title # optional, displayed above video
       caption: A caption # optional, displayed below video
+      answer_image: media/c1q3.png # path to answer_image, creates additional solution slide
       answer: An answer
       source: Artist, License # optional, displayed on the bottom in small font
 
@@ -126,6 +129,7 @@ questions: # array of questions, if missing the category will be treated just as
       controls: true
       title: Some title # optional, displayed above video
       caption: A caption # optional, displayed below video
+      answer_image: media/c1q3.png # path to answer_image, creates additional solution slide
       answer: An answer
       source: https://www.youtube.com/watch?v=dQw4w9WgXcQ # optional, displayed on the bottom in small font
 ```
