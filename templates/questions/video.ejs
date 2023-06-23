@@ -12,10 +12,22 @@
             <%_ if (question.caption) { -%>
                 <p class="caption"><%= question.caption %></p>
             <%_ } -%>
-            <%_ if (isAnswer) { -%>
+            <%_ if (isAnswer && !Object.prototype.hasOwnProperty.call(question, 'answer_image')) { -%>
                 <p class="fragment answer"><%= question.answer %></p>
             <%_ } -%>
             <%_ if (question.source) { -%>
                 <p class="source"><%= question.source %></p>
             <%_ } -%>
         </section>
+        <%_ if (isAnswer && Object.prototype.hasOwnProperty.call(question, 'answer_image')) { -%>
+            <section data-category-number="<%= question.category_number %>" data-question-number="<%= question.question_number %>" data-transition="none">
+                <%_ if (question.title) { -%>
+                    <h2><%= question.title %></h2>
+                <%_ } -%>
+                <img class="r-stretch" data-src="<%- question.answer_image %>">
+                <%_ if (question.caption) { -%>
+                    <p class="caption"><%= question.caption %></p>
+                <%_ } -%>
+                <p class="answer"><%= question.answer %></p>
+            </section>
+        <%_ } -%>

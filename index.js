@@ -109,31 +109,11 @@ async function parseYamlFiles(path) {
     };
 }
 
-function insertAnswerImages(slides = [{}]) {
-    // insert additional slides with the image replaced,
-    // if an answer_image property is set
-    // note: this is an ugly hack to avoid dealing with css
-    const answerSlides = [];
-    for(let slide of slides) {
-        slide.hide_answer = false;
-        answerSlides.push(slide);
-        if (Object.prototype.hasOwnProperty.call(slide, 'answer_image') &&
-            Object.prototype.hasOwnProperty.call(slide, 'image')) {
-            slide.hide_answer = true;
-            let clone = structuredClone(slide);
-            clone.image = clone.answer_image;
-            clone.immediatly_show_answer = true;
-            answerSlides.push(clone);
-        }
-    }
-    return answerSlides;
-}
-
 async function createSlides(slides, worksheetCategories, config, templatesPath, outPath){
     await createDirectoryIfNotExists(outPath);
 
     const quiz = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: false, config }, {});
-    const answers = await render(templatesPath + '/index.ejs', { questions: insertAnswerImages(slides), isAnswer: true, config }, {});
+    const answers = await render(templatesPath + '/index.ejs', { questions: slides, isAnswer: true, config }, {});
     const worksheet = await render(templatesPath + '/worksheet.ejs', { worksheetCategories: worksheetCategories, isAnswer: false, config }, {});
     const solutionsheet = await render(templatesPath + '/worksheet.ejs', { worksheetCategories: worksheetCategories, isAnswer: true, config }, {});
 
