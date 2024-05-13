@@ -41,7 +41,7 @@
     "mkdirp": "^3.0.0"
   },
   "optionalDependencies": {
-    "bin-version-check": "^5.1.0",
+    "bin-version-check": "^6.0.0",
     "youtube-dl-exec": "^2.4.6"
   }
 }
