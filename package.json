@@ -43,6 +43,6 @@
   },
   "optionalDependencies": {
     "binary-version-check": "^6.1.0",
-    "youtube-dl-exec": "^2.4.6"
+    "youtube-dl-exec": "^3.0.10"
   }
 }

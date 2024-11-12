@@ -1,4 +1,3 @@
-// FIXME switch to esm syntax?
 import binaryVersionCheck from 'binary-version-check';
 
 function convertTimeToSeconds(time= '00:00'){
@@ -73,14 +72,10 @@ function buildProperties(properties = {}) {
     };
 }
 
-let youtubedl = null;
-
 export const download = async function(url, properties = {}) {
-    if (youtubedl === null) { // lazy load dependency
-        youtubedl = require('youtube-dl-exec');
-    }
-
-    await youtubedl(url, buildProperties(properties))
+    let { youtubeDl } = await import('youtube-dl-exec');
+    const props = buildProperties(properties);
+    await youtubeDl(url, props)
         .then(output => console.log(output));
 };
 
