@@ -1,6 +1,6 @@
 {
   "name": "pub-quiz-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "type": "module",
   "description": "Write a pub quiz as YAML, compile into HTML presentation",
   "main": "index.js",
