@@ -31,15 +31,15 @@
   },
   "homepage": "https://github.com/pfirpfel/pub-quiz-generator#readme",
   "dependencies": {
-    "ejs": "^3.1.9",
+    "ejs": "^3.1.10",
     "js-yaml": "^4.1.0",
     "reveal.js": "^5.0.1",
-    "yargs": "^17.7.1"
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "eslint": "^9.14.0",
-    "rimraf": "^5.0.0",
-    "mkdirp": "^3.0.0"
+    "rimraf": "^6.0.1",
+    "mkdirp": "^3.0.1"
   },
   "optionalDependencies": {
     "binary-version-check": "^6.1.0",
