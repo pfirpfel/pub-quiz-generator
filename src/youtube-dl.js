@@ -75,19 +75,21 @@ function buildProperties(properties = {}) {
 }
 
 let youtubedl = null;
-exports.download = async function(url, properties = {}) {
+
+export const download = async function(url, properties = {}) {
     if (youtubedl === null) { // lazy load dependency
         youtubedl = require('youtube-dl-exec');
     }
 
     await youtubedl(url, buildProperties(properties))
         .then(output => console.log(output));
-}
+};
 
-exports.checkDependencies = async function() {
+export const checkDependencies = async function() {
     // check for python >= 3.7
     try {
         await binaryVersionCheck('python3', '>=3.7');
+        // eslint-disable-next-line no-unused-vars
     } catch(error) {
         try {
             await binaryVersionCheck('python', '>=3.7');
@@ -105,4 +107,4 @@ exports.checkDependencies = async function() {
         return false;
     }
     return true;
-}
+};

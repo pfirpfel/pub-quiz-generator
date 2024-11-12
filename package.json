@@ -1,6 +1,7 @@
 {
   "name": "pub-quiz-generator",
-  "version": "0.0.15",
+  "version": "0.1.0",
+  "type": "module",
   "description": "Write a pub quiz as YAML, compile into HTML presentation",
   "main": "index.js",
   "files": [
@@ -36,7 +37,7 @@
     "yargs": "^17.7.1"
   },
   "devDependencies": {
-    "eslint": "^8.38.0",
+    "eslint": "^9.14.0",
     "rimraf": "^5.0.0",
     "mkdirp": "^3.0.0"
   },
