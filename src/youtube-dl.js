@@ -1,6 +1,5 @@
 // FIXME switch to esm syntax?
-const binaryVersionCheck
-    = (...args) => import('bin-version-check').then(({default: binaryVersionCheck}) => binaryVersionCheck(...args));
+import binaryVersionCheck from 'binary-version-check';
 
 function convertTimeToSeconds(time= '00:00'){
     const parts = time.split(':');
