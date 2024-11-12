@@ -1,9 +1,15 @@
 #!/usr/bin/env node
-const process = require('node:process');
-const path = require('path');
-const { listFiles, createDirectoryIfNotExists, writeFile, readYamlFile, findFile } = require('./src/util');
-const { download, checkDependencies } = require('./src/youtube-dl');
-const ejs = require('ejs');
+import process from 'node:process';
+import path from 'path';
+import { listFiles, createDirectoryIfNotExists, writeFile, readYamlFile, findFile } from './src/util.js';
+import { download, checkDependencies } from './src/youtube-dl.js';
+import ejs from 'ejs';
+import yargs from "yargs";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 async function main() {
     const { yamlDir, templatesPath, outPath } = parseArgs();
@@ -16,7 +22,7 @@ async function main() {
 }
 
 function parseArgs() {
-    const argv = require('yargs/yargs')(process.argv.slice(2))
+    const argv = yargs(process.argv.slice(2))
         .usage('Usage: $0 -d [directory]')
         .alias('d', 'directory')
         .nargs('d', 1)

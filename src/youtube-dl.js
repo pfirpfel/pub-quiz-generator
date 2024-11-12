@@ -1,6 +1,4 @@
-// FIXME switch to esm syntax?
-const binaryVersionCheck
-    = (...args) => import('bin-version-check').then(({default: binaryVersionCheck}) => binaryVersionCheck(...args));
+import binaryVersionCheck from 'binary-version-check';
 
 function convertTimeToSeconds(time= '00:00'){
     const parts = time.split(':');
@@ -74,20 +72,18 @@ function buildProperties(properties = {}) {
     };
 }
 
-let youtubedl = null;
-exports.download = async function(url, properties = {}) {
-    if (youtubedl === null) { // lazy load dependency
-        youtubedl = require('youtube-dl-exec');
-    }
-
-    await youtubedl(url, buildProperties(properties))
+export const download = async function(url, properties = {}) {
+    let { youtubeDl } = await import('youtube-dl-exec');
+    const props = buildProperties(properties);
+    await youtubeDl(url, props)
         .then(output => console.log(output));
-}
+};
 
-exports.checkDependencies = async function() {
+export const checkDependencies = async function() {
     // check for python >= 3.7
     try {
         await binaryVersionCheck('python3', '>=3.7');
+        // eslint-disable-next-line no-unused-vars
     } catch(error) {
         try {
             await binaryVersionCheck('python', '>=3.7');
@@ -105,4 +101,4 @@ exports.checkDependencies = async function() {
         return false;
     }
     return true;
-}
+};

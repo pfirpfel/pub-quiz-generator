@@ -1,6 +1,7 @@
 {
   "name": "pub-quiz-generator",
-  "version": "0.0.15",
+  "version": "0.1.0",
+  "type": "module",
   "description": "Write a pub quiz as YAML, compile into HTML presentation",
   "main": "index.js",
   "files": [
@@ -30,18 +31,18 @@
   },
   "homepage": "https://github.com/pfirpfel/pub-quiz-generator#readme",
   "dependencies": {
-    "ejs": "^3.1.9",
+    "ejs": "^3.1.10",
     "js-yaml": "^4.1.0",
-    "reveal.js": "^5.0.1",
-    "yargs": "^17.7.1"
+    "reveal.js": "^5.1.0",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "eslint": "^8.38.0",
-    "rimraf": "^5.0.0",
-    "mkdirp": "^3.0.0"
+    "eslint": "^9.14.0",
+    "rimraf": "^6.0.1",
+    "mkdirp": "^3.0.1"
   },
   "optionalDependencies": {
-    "bin-version-check": "^5.1.0",
-    "youtube-dl-exec": "^2.4.6"
+    "binary-version-check": "^6.1.0",
+    "youtube-dl-exec": "^3.0.10"
   }
 }
