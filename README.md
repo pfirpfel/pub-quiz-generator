@@ -104,6 +104,8 @@ questions: # array of questions, if missing the category will be treated just as
       caption: A caption # optional, displayed below image
       answer_image: media/c1q3.png # path to answer_image, creates additional solution slide
       answer: An answer
+      answer_audio: media/trivia1.ogg # additional audio, that shows up along the answer
+      answer_audio_type: audio/ogg # mime type of answer_audio
       source: Artist, License # optional, displayed on the bottom in small font
     
     - type: video # question with a video file
