@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/pfirpfel/pub-quiz-generator#readme",
   "dependencies": {
-    "ejs": "^3.1.10",
+    "ejs": "^4.0.1",
     "js-yaml": "^4.1.0",
     "reveal.js": "^5.1.0",
     "yargs": "^17.7.2"
